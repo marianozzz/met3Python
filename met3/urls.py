@@ -15,9 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from met3.views import index
+from met3App import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('index/', index),
+    path('', views.index, name="Inicio"),
 ]
