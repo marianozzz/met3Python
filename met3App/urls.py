@@ -4,5 +4,6 @@ from met3App import views
 
 urlpatterns = [
 
-    path('', views.index, name="Inicio"),
+    path('', views.home, name="Home"),
+    path('login/', views.login, name="Login"),
 ]
