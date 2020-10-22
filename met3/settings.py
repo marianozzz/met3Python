@@ -55,7 +55,7 @@ ROOT_URLCONF = 'met3.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:/Users/patricio/Desktop/met3Python/met3App/templates/met3App'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

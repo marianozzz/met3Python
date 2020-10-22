@@ -5,6 +5,16 @@
     <title>Home</title>
 </head>
 <body>
- <p>Inicio</p>
+ <p>mostrar las propiedades</p>
+    <p>
+     {% if propiedades %}
+     {% for pro in propiedades%}
+     
+        <p>{{pro.title}}</p>
+     
+    {% endfor %}
+    {% endif %}
+    </p>
 </body>
 </html>
+
