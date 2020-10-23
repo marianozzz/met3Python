@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import Host
+#from django.contrib.auth.models import Host
 
 # Create your models here.
 
@@ -20,7 +20,7 @@ class PropertyUser(models.Model):
     #image = models.ImageField(upload_to='images', max_length=100)
     dailyRate = models.IntegerField()
     city = models.ForeignKey(City, null=True, blank=True, on_delete=models.CASCADE)
-    host = models.ForeignKey(Host, null=False, on_delete = models.CASCADE)
+    #host = models.ForeignKey(Host, null=False, on_delete = models.CASCADE)
 
     class Meta:
         verbose_name_plural = "PropertiesUser"
