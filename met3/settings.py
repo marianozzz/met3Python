@@ -119,3 +119,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_USER_MODEL='met3App.Host'
+
+MEDIA_URL = "/met3App/"
+MEDIA_ROOT = os.path.join(BASE_DIR, "met3App/static/met3App/")

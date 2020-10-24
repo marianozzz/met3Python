@@ -4,7 +4,12 @@
 {% load static %}
 
 {% block content %}
-
+<!-- agregar filtrando por ciudad, cantidad de pax y rango de fechas -->
+{% if Properties %}
+  {% for pro in Properties %}
+    <li>{{ pro.title }} , {{ pro.dailyRate }} ,  {{ pro.city }}  ,  {{ pro.services }}</li>
+  {% endfor %}
+{% endif %}
 <div class="row mt-4">
         <div class="col-md-4">
           <div class="card mb-4 shadow-sm">
