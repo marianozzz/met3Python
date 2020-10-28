@@ -21,8 +21,11 @@ def home(request):
 def login(request):
     return  render(request, "met3App/login.html")
 
-def details(request):
-    return  render(request, "met3App/details.html")
+def details(request, id):
+    idpropiedad = PropertyUser.objects.get(id=id)
+    #prop = PropertyUser.objects.filter(id)
+    #return  render(request, "met3App/details.html",{"prop":prop})
+    return  render(request, "met3App/details.html",{"idpropiedad":idpropiedad})
 
 
 
