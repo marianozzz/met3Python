@@ -80,4 +80,3 @@ class RentalDateInline(admin.TabularInline):
 class PropertyUserAdmin(admin.ModelAdmin):
     inlines = [RentalDateInline, ]
     
-
