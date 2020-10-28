@@ -6,7 +6,7 @@
 {% block content %}
 
     <div class="heading-section">
-        <h2>Detalle</h2>
+        <h2>{{ idpropiedad.title }}</h2>
     </div>
     <div class="row">
         <div class="col-md-6">
@@ -15,13 +15,12 @@
         <div class="col-md-6">
             <div class="product-dtl">
                 <div class="product-info">
-                    <div class="product-name">Variable Product</div>
+                    <div class="product-name">{{ idpropiedad.title }}</div>
                     <div class="reviews-counter"></div>
                 
                     </div>
                     <div class="product-price-discount">
-                        <span>$39.00</span>
-                        <span class="line-through">$29.00</span>
+                        <span class="line-through">Precio x dia ${{ idpropiedad.dailyRate}}.00</span>
                     </div>
                 </div>
                 <p>Descripcion corta </p>
@@ -29,19 +28,41 @@
 
                 </div>
                 <div class="product-count">
-                    <label for="size">Quantity</label>
+                    <label for="size">Seleccionar Fecha</label>
                     <form action="#" class="display-flex">
-                        <div class="qtyminus">-</div>
-                        <input type="date" name="quantity"  class="qty">
-                        <div class="qtyplus">+</div>
+                        <div class="qtyplus">
+                            <label for="">Entrada</label>
+                            <input type="date" min="2020-01-01" max="2025-04-20" name="quantity"  class="qty">
+                        </div>
+                        
+                        <div class="qtyplus">
+                            <label for="">Salida</label>
+                            <input type="date"  min="2020-01-01" max="2025-04-20" name="quantity"  class="qty">
+                        </div>
+                        <div class="form-group">
+                            <label for="">Cantidad de huespedes</label>
+                            <select name="" id="">
+
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">Nombre</label>
+                            <input type="text" name="name" id="" class="form-control">
+                       </div>
+                       <div class="form-group">
+                        <label for="">Email</label>
+                        <input type="email" name="name" id="" class="form-control">
+                   </div>
+                   <input type="submit" class="btn btn-success" value="Reservar">
                     </form>
-                    <a  href="#" class="btn btn-success">Reservar</a>
+                    
                 </div>
         </div>
     </div>
 
 
-<div class="product-info-tabs">
+<div class="product-info-tabs mb-5">
     <ul class="nav nav-tabs" id="myTab" role="tablist">
           <li class="nav-item">
             <a class="nav-link active" id="description-tab" data-toggle="tab" href="#description" role="tab" aria-controls="description" aria-selected="true">Description</a>
@@ -49,7 +70,7 @@
     </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                Descripcion Larga
+                {{ idpropiedad.description }}
             </div>
         </div>
 </div>
