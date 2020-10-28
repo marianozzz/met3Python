@@ -4,6 +4,7 @@ from django.contrib.auth.models import Group
 from django.contrib.auth.models import UserManager 
 from django.contrib.auth.models import AbstractUser
 
+
 # Create your models here.
 
 class City(models.Model):
@@ -24,16 +25,9 @@ class ProService(models.Model):
     def __str__(self):
         return self.name
 
-
 class Host(AbstractUser):
     pass
     group=models.OneToOneField('auth.Group',unique=True, on_delete=False,null=True)
-
-    #class Meta:
-     #   verbose_name_plural = "Anfitriones"
-
-    #def __str__(self):
-     #   return self.username
 
 
 class PropertyUser(models.Model):
@@ -51,7 +45,6 @@ class PropertyUser(models.Model):
 
     def __str__(self):
         return self.title
-
 
 class Reservation(models.Model):
     total = models.IntegerField(blank=True, null=True)
@@ -80,4 +73,11 @@ class RentalDate(models.Model):
     def __str__(self):
         return  self.starDate.strftime('%d/%m/%Y') + " to " + self.endDate.strftime('%d/%m/%Y')
 
+class RentalDateInline(admin.TabularInline):
+    model = RentalDate
+    fk_name = 'propertyUser'
+    max_num = 7
+class PropertyUserAdmin(admin.ModelAdmin):
+    inlines = [RentalDateInline, ]
+    
 
