@@ -16,7 +16,7 @@
               <p class="card-text">id: {{ pro.id }}, {{ pro.title }} , {{ pro.dailyRate }} ,  {{ pro.city }}  ,  {{ pro.services }}</p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
-                  <a href="#" class="btn btn-primary btn-sm">Ver</a>
+                  <a href="{% url 'Details' pro.id %} " class="btn btn-primary btn-sm">Ver</a>
                   <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
                 </div>
                 <small class="text-muted">MET 3</small>
