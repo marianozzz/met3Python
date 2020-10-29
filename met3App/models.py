@@ -3,6 +3,7 @@ from django.contrib import admin
 from django.contrib.auth.models import Group
 from django.contrib.auth.models import UserManager 
 from django.contrib.auth.models import AbstractUser
+from datetime import datetime
 
 
 # Create your models here.
@@ -36,9 +37,11 @@ class PropertyUser(models.Model):
     services= models.ManyToManyField(ProService)
     maxPax = models.IntegerField()
     image = models.ImageField(upload_to='img', null=True)
+    starDate = models.DateField()
+    endDate = models.DateField()
     dailyRate = models.IntegerField()
     city = models.ForeignKey(City, null=True, blank=True, on_delete=models.CASCADE)
-    host = models.ForeignKey(Host, null=True, blank=True, on_delete=models.CASCADE) 
+    host = models.ForeignKey(Host, null=True, blank=True, on_delete=models.CASCADE)
 
     class Meta:
         verbose_name_plural = "Propiedades"

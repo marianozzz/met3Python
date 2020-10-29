@@ -14,7 +14,7 @@
             <!--<svg class="bd-placeholder-img card-img-top" width="100%" height="225"  xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
             <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ pro.image.url }}" alt="Imagen de la propiedad">
             <div class="card-body">
-              <p class="card-text"> <em>Camas {{ pro.maxPax }}</em> <h4>{{ pro.title }}</h4> <p>${{ pro.dailyRate }} ARG por noche</p> <p>{{ pro.services }}</p></p>
+              <p class="card-text"> <em>Camas {{ pro.maxPax }}</em> <h4>{{ pro.title }}</h4> <p>${{ pro.dailyRate }} ARG por noche</p> <p>{% for ser in pro.services.all %} {{ ser }} {% endfor %}</p></p>
               <div class="d-flex justify-content-between align-items-center">
                 <div class="btn-group">
                   <a href="{% url 'Details' pro.id %} " class="btn btn-primary btn-sm">Ver</a>
