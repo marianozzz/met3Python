@@ -63,9 +63,19 @@
                         </div>
                         <div class="form-group">
                             <label for="">Cantidad de huespedes</label>
-                            <select name="" id=""  size="">
-                               <option value="{{ i }}">{{ propertyUser.maxPax }}</option> 
+
+                            <select name="maxpax" id=""  size="">
+
+                            {% for i in loop_maxpax %}
+                                 <option  value="{{ i }}" > {{ i }} </option>
+                            {% endfor %}
+                            
+                                
                             </select>
+
+
+
+
                         </div>
 
                         <div class="form-group">
@@ -145,22 +155,32 @@
 
     var rentals = document.getElementById("myVar").value; //agarro la list de django
     rentals = rentals.split(',') // la transformo en lista de js
-
+    console.log(rentals);
     var days= [];// DatesStart
     var daye= [];// DatesEnd
     for(i = 0; i < rentals.length; i++){
-        year=rentals[i].substring(13,24) // agarro la fecha
-        year=year.substring(7,11)        //agarro el anio
-        month=rentals[i].substring(13,24)// agarro la fecha
-        month=month.substring(4,6)       //agarro el mes
-        day=rentals[i].substring(13,24)  // agarro la fecha
-        day=day.substring(1,3)           //agarro el dia
+        //primera parte del string ->date inicio
+        year=rentals[i].substring(13,24) 
+        year=year.substring(7,11) 
+        month=rentals[i].substring(13,24)
+        month=month.substring(4,6) 
+        day=rentals[i].substring(13,24)  
+        day=day.substring(1,3)
 
         days[i]=new Date(year, month, day) 
+        //segunda parte del string ->date final
+        year=rentals[i].substring(27,38) 
+        year=year.substring(7,11)       
+        month=rentals[i].substring(27,38)
+        month=month.substring(4,6) 
+        day=rentals[i].substring(27,38)  
+        day=day.substring(1,3)
+        
         daye[i]=new Date(year, month, day)
+
     };
 
-
+    
 $(function() {
 $.datepicker.setDefaults($.datepicker.regional["es"]);
  $("#datepicker1").datepicker({
@@ -191,22 +211,32 @@ $.datepicker.setDefaults($.datepicker.regional["es"]);
 
     var rentals = document.getElementById("myVar").value; //agarro la list de django
     rentals = rentals.split(',') // la transformo en lista de js
-
+    console.log(rentals);
     var days= [];// DatesStart
     var daye= [];// DatesEnd
     for(i = 0; i < rentals.length; i++){
-        year=rentals[i].substring(13,24) // agarro la fecha
-        year=year.substring(7,11)        //agarro el anio
-        month=rentals[i].substring(13,24)// agarro la fecha
-        month=month.substring(4,6)       //agarro el mes
-        day=rentals[i].substring(13,24)  // agarro la fecha
-        day=day.substring(1,3)           //agarro el dia
+        //primera parte del string ->date inicio
+        year=rentals[i].substring(13,24) 
+        year=year.substring(7,11) 
+        month=rentals[i].substring(13,24)
+        month=month.substring(4,6) 
+        day=rentals[i].substring(13,24)  
+        day=day.substring(1,3)
 
         days[i]=new Date(year, month, day) 
+        //segunda parte del string ->date final
+        year=rentals[i].substring(27,38) 
+        year=year.substring(7,11)       
+        month=rentals[i].substring(27,38)
+        month=month.substring(4,6) 
+        day=rentals[i].substring(27,38)  
+        day=day.substring(1,3)
+        
         daye[i]=new Date(year, month, day)
+
     };
 
-
+    
 $(function() {
 $.datepicker.setDefaults($.datepicker.regional["es"]);
  $("#datepicker2").datepicker({
