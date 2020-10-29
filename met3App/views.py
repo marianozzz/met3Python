@@ -18,7 +18,7 @@ def details(request,id):
     propertyUser= PropertyUser.objects.get(id=id)
     rentalsDate = RentalDate.objects.filter(propertyUser=propertyUser,reservation__isnull=True)
     rentalsDate= list(rentalsDate)
-    context={"propertyUser":propertyUser, "rentalsDate": rentalsDate}
+    context={"propertyUser":propertyUser, "rentalsDate": rentalsDate, "loop_maxpax": range(1, propertyUser.maxPax+1)}
 
     return  render(request, "met3App/details.html",context)
 
