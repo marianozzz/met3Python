@@ -28,7 +28,7 @@ class ProService(models.Model):
 
 class Host(AbstractUser):
     pass
-    group=models.OneToOneField('auth.Group',unique=True, on_delete=False,null=True)
+    group=models.OneToOneField('auth.Group',unique=True, on_delete=True,null=True)
 
 
 class PropertyUser(models.Model):
