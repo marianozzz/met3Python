@@ -15,8 +15,13 @@ def login(request):
     return  render(request, "met3App/login.html")
 
 def details(request,id):
-    idpropiedad = PropertyUser.objects.get(id=id)
-    return  render(request, "met3App/details.html",{"idpropiedad":idpropiedad})
+    propertyUser= PropertyUser.objects.get(id=id)
+    rentalsDate = RentalDate.objects.filter(propertyUser=propertyUser,reservation__isnull=True)
+    rentalsDate= list(rentalsDate)
+    context={"propertyUser":propertyUser, "rentalsDate": rentalsDate}
+
+    return  render(request, "met3App/details.html",context)
+
 
 def about_us(request):
     return  render(request, "met3App/about_us.html")
