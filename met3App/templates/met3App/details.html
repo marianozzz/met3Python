@@ -3,22 +3,26 @@
 
 {% load static %}
 
+
+
+
+
 {% block content %}
 
     <div class="heading-section">
-        <h2>{{ idpropiedad.title }}</h2>
+        <h2>{{ propertyUser.title }}</h2>
         <p class="h6">
             <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-geo-alt-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                 <path fill-rule="evenodd" d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"/>
             </svg>
-             Ubicacion {{idpropiedad.city}} 
+             Ubicacion {{propertyUser.city}} 
        </p>
     </div>
     <div class="row">
 
         <!--Imagen ACA-->
         <div class="col-md-6">
-            <img class="bd-placeholder-img card-img-top" width="100%" height="425" src="{{ idpropiedad.image.url }}" alt="Imagen de la propiedad">
+            <img class="bd-placeholder-img card-img-top" width="100%" height="425" src="{{ propertyUser.image.url }}" alt="Imagen de la propiedad">
         </div>
         <!--Fin de imagen-->
 
@@ -31,7 +35,7 @@
                     </div>
                     <div class="product-price-discount">
                         
-                        <span class="line-through">${{ idpropiedad.dailyRate}}.00 Por noche</span>
+                        <span class="line-through">${{ propertyUser.dailyRate}}.00 Por noche</span>
                     </div>
                 </div>
                 <p>Descripcion corta </p>
@@ -49,18 +53,19 @@
                     <form action="#" class="display-flex">
                         <div class="qtyplus">
                             <label for="">Entrada</label>
-                            <input type="date" min= "" max="2025-04-20"  class="form-control">
+                            <input type="text" id="datepicker1" />
+                         
                         </div>
                         
                         <div class="qtyplus">
                             <label for="">Salida</label>
-                            <input type="date"  min="2020-01-01" max="2025-04-20"  class="form-control">
+                            <input type="text" id="datepicker2" />                        
                         </div>
                         <div class="form-group">
                             <label for="">Cantidad de huespedes</label>
                             <select name="" id=""  size="">
                                
-                                    <option value="{{ i }}">{{ idpropiedad.maxPax }}</option>
+                                    <option value="{{ i }}">{{ propertyUser.maxPax }}</option>
                                 
                             </select>
                         </div>
@@ -98,21 +103,16 @@
     </ul>
         <div class="tab-content">
             <div class="tab-pane fade show active" id="description" role="tabpanel" aria-labelledby="description-tab">
-                {{ idpropiedad.description }}
+                {{ Property.description }}
             </div>
         </div>
         <hr>
         <div class="form-group">
             <label for="">Servicios</label>
-            <p>
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-wifi" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M15.385 6.115a.485.485 0 0 0-.048-.736A12.443 12.443 0 0 0 8 3 12.44 12.44 0 0 0 .663 5.379a.485.485 0 0 0-.048.736.518.518 0 0 0 .668.05A11.448 11.448 0 0 1 8 4c2.507 0 4.827.802 6.717 2.164.204.148.489.13.668-.049z"/>
-                    <path d="M13.229 8.271c.216-.216.194-.578-.063-.745A9.456 9.456 0 0 0 8 6c-1.905 0-3.68.56-5.166 1.526a.48.48 0 0 0-.063.745.525.525 0 0 0 .652.065A8.46 8.46 0 0 1 8 7a8.46 8.46 0 0 1 4.577 1.336c.205.132.48.108.652-.065zm-2.183 2.183c.226-.226.185-.605-.1-.75A6.472 6.472 0 0 0 8 9c-1.06 0-2.062.254-2.946.704-.285.145-.326.524-.1.75l.015.015c.16.16.408.19.611.09A5.478 5.478 0 0 1 8 10c.868 0 1.69.201 2.42.56.203.1.45.07.611-.091l.015-.015zM9.06 12.44c.196-.196.198-.52-.04-.66A1.99 1.99 0 0 0 8 11.5a1.99 1.99 0 0 0-1.02.28c-.238.14-.236.464-.04.66l.706.706a.5.5 0 0 0 .708 0l.707-.707z"/>
-                  </svg>
-                  servicios de la propiedad(falta mostrar bien!!):  
-                  {% for ser in idpropiedad.services.all %} {{ ser }} {% endfor %}
-            </p>
-            <p>
+            {% for ser in propertyUser.services.all %}
+            <p style="margin-left: 20px;">{{ ser }}</p>
+            {% endfor %}
+            <!-- <p>
                 <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-tv" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
                     <path fill-rule="evenodd" d="M2.5 13.5A.5.5 0 0 1 3 13h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zM13.991 3H2c-.325 0-.502.078-.602.145a.758.758 0 0 0-.254.302A1.46 1.46 0 0 0 1 4.01V10c0 .325.078.502.145.602.07.105.17.188.302.254a1.464 1.464 0 0 0 .538.143L2.01 11H14c.325 0 .502-.078.602-.145a.758.758 0 0 0 .254-.302 1.464 1.464 0 0 0 .143-.538L15 9.99V4c0-.325-.078-.502-.145-.602a.757.757 0 0 0-.302-.254A1.46 1.46 0 0 0 13.99 3zM14 2H2C0 2 0 4 0 4v6c0 2 2 2 2 2h12c2 0 2-2 2-2V4c0-2-2-2-2-2z"/>
                   </svg>
@@ -130,10 +130,109 @@
                     <path d="M7 13.5h2V16H7v-2.5z"/>
                   </svg>
                   Parque con parrilla
-            </p>
+            </p> -->
         </div>
+
+        <!-- Input oculto para agarrar el valor desde javascript -->
+        <input type="hidden" id="myVar" value="{{ rentalsDate }}">
 </div>
 
 
+{% endblock %}
+
+
+{% block scripts %}
+
+<script>
+
+    var rentals = document.getElementById("myVar").value; //agarro la list de django
+    rentals = rentals.split(',') // la transformo en lista de js
+
+    var days= [];// DatesStart
+    var daye= [];// DatesEnd
+    for(i = 0; i < rentals.length; i++){
+        year=rentals[i].substring(13,24) // agarro la fecha
+        year=year.substring(7,11)        //agarro el anio
+        month=rentals[i].substring(13,24)// agarro la fecha
+        month=month.substring(4,6)       //agarro el mes
+        day=rentals[i].substring(13,24)  // agarro la fecha
+        day=day.substring(1,3)           //agarro el dia
+
+        days[i]=new Date(year, month, day) 
+        daye[i]=new Date(year, month, day)
+    };
+
+
+$(function() {
+$.datepicker.setDefaults($.datepicker.regional["es"]);
+ $("#datepicker1").datepicker({
+    numberOfMonths: 1,
+    beforeShowDay: function(date) { //al no poder hacer un for each dentro de return solo puedo hacerlo
+                                    //prototipado, solo se puede hasta 5 rangos, se podrian poner mas
+        switch (days.length) { 
+            case 1: 
+                return [( date >= days[0] && date <= daye[0] ), ''];
+            case 2: 
+                return [( date >= days[0] && date <= daye[0] || date >= days[1] && date <= daye[1]), ''];
+            case 3: 
+                return [( date >= days[0] && date <= daye[0] || date >= days[1] && date <= daye[1] || date >= days[2] && date <= daye[2]), ''];
+            case 4: 
+                return [( date >= days[0] && date <= daye[0] || date >= days[1] && date <= daye[1] || date >= days[2] && date <= daye[2] || date >= days[3] && date <= daye[3]), ''];
+            case 5: 
+                return [( date >= days[0] && date <= daye[0] || date >= days[1] && date <= daye[1] || date >= days[2] && date <= daye[2] || date >= days[3] && date <= daye[3] || date >= days[3] && date <= daye[3]), ''];
+            }
+    },
+
+    minDate: days[0],
+    maxDate: daye[daye.length -1]
+  });
+});
+</script>
+
+<script>
+
+    var rentals = document.getElementById("myVar").value; //agarro la list de django
+    rentals = rentals.split(',') // la transformo en lista de js
+
+    var days= [];// DatesStart
+    var daye= [];// DatesEnd
+    for(i = 0; i < rentals.length; i++){
+        year=rentals[i].substring(13,24) // agarro la fecha
+        year=year.substring(7,11)        //agarro el anio
+        month=rentals[i].substring(13,24)// agarro la fecha
+        month=month.substring(4,6)       //agarro el mes
+        day=rentals[i].substring(13,24)  // agarro la fecha
+        day=day.substring(1,3)           //agarro el dia
+
+        days[i]=new Date(year, month, day) 
+        daye[i]=new Date(year, month, day)
+    };
+
+
+$(function() {
+$.datepicker.setDefaults($.datepicker.regional["es"]);
+ $("#datepicker2").datepicker({
+    numberOfMonths: 1,
+    beforeShowDay: function(date) { //al no poder hacer un for each dentro de return solo puedo hacerlo
+                                    //prototipado, solo se puede hasta 5 rangos, se podrian poner mas
+        switch (days.length) { 
+            case 1: 
+                return [( date >= days[0] && date <= daye[0] ), ''];
+            case 2: 
+                return [( date >= days[0] && date <= daye[0] || date >= days[1] && date <= daye[1]), ''];
+            case 3: 
+                return [( date >= days[0] && date <= daye[0] || date >= days[1] && date <= daye[1] || date >= days[2] && date <= daye[2]), ''];
+            case 4: 
+                return [( date >= days[0] && date <= daye[0] || date >= days[1] && date <= daye[1] || date >= days[2] && date <= daye[2] || date >= days[3] && date <= daye[3]), ''];
+            case 5: 
+                return [( date >= days[0] && date <= daye[0] || date >= days[1] && date <= daye[1] || date >= days[2] && date <= daye[2] || date >= days[3] && date <= daye[3] || date >= days[3] && date <= daye[3]), ''];
+            }
+    },
+
+    minDate: days[0],
+    maxDate: daye[daye.length -1]
+  });
+});
+</script>
 
 {% endblock %}
