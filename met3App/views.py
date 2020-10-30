@@ -13,6 +13,7 @@ def home(request):
 
 def login(request):
     return  render(request, "met3App/login.html")
+ 
 
 def details(request,id):
     propertyUser= PropertyUser.objects.get(id=id)
@@ -24,5 +25,28 @@ def details(request,id):
 
 
 def about_us(request):
+    
     return  render(request, "met3App/about_us.html")
 
+
+def reserva(request,id):
+    if request.method == 'POST':
+        
+        pro = PropertyUser.objects.get(id=request.POST['propertyId'])
+        na=request.POST['name']
+        lastn=request.POST['lastname']
+        ema=request.POST['email']
+        to= (abs((datetime.strptime(request.POST['dateTo'], '%m/%d/%Y')) - (datetime.strptime(request.POST['dateFrom'], '%m/%d/%Y'))).days) * pro.dailyRate
+        
+        r = Reservation(
+            startDate=datetime.strptime(request.POST['dateFrom'], '%m/%d/%Y').date(),
+            endDate=datetime.strptime(request.POST['dateTo'], '%m/%d/%Y').date(),
+            name=na,
+            lastname=lastn,
+            email=ema,
+            propertyUser=PropertyUser.objects.get(id=request.POST['propertyId']),
+            total=to
+        )
+        r.save()
+         
+    return  render(request, "met3App/home.html")
