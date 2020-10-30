@@ -22,6 +22,10 @@ def details(request,id):
 
     return  render(request, "met3App/details.html",context)
 
+def search(request):
+    
+    ProAll=City.objects.all()
+    return  render(request, "met3App/search.html",{"ProAll":ProAll})
 
 def about_us(request):
     return  render(request, "met3App/about_us.html")
