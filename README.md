@@ -33,10 +33,6 @@ $ python -m pip install Django
 Instalando la versión de desarrollo
 Seguimiento del desarrollo de Django
 
-Si decide utilizar la última versión de desarrollo de Django, querrá prestar mucha atención a la línea de tiempo de desarrollo y querrá estar atento a las notas de la versión para la próxima versión . Esto le ayudará a estar al tanto de las nuevas funciones que desee utilizar, así como de los cambios que deberá realizar en su código al actualizar su copia de Django. (Para las versiones estables, los cambios necesarios se documentan en las notas de la versión).
-
-Si desea poder actualizar su código de Django ocasionalmente con las últimas mejoras y correcciones de errores, siga estas instrucciones:
-
 Asegúrese de tener Git instalado y de poder ejecutar sus comandos desde un shell. (Ingrese en un indicador de shell para probar esto).git help
 
 Echa un vistazo a la rama de desarrollo principal de Django así:
@@ -44,8 +40,6 @@ Echa un vistazo a la rama de desarrollo principal de Django así:
 ```
 $ git clone https://github.com/django/django.git
 ```
-
-_Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
 
 ## Ejecutando las pruebas ⚙️
 
@@ -73,11 +67,12 @@ _Agrega notas adicionales sobre como hacer deploy_
 
 ## Construido con 🛠️
 
-_Menciona las herramientas que utilizaste para crear tu proyecto_
-
-* [Dropwizard](http://www.dropwizard.io/1.0.2/docs/) - El framework web usado
-* [Maven](https://maven.apache.org/) - Manejador de dependencias
-* [ROME](https://rometools.github.io/rome/) - Usado para generar RSS
+* [Python 3.8](https://www.python.org/) - Leguaje de Programacion
+* [JavaScript](https://www.javascript.com/) - Leguaje de Programacion
+* [Bootstrap](https://getbootstrap.com/) - Kit de Herramientas de codigo abierto
+* [Django 2.2](https://www.djangoproject.com/) - Frameworks Web
+* [Pip 20.2.4](https://pip.pypa.io/en/stable/installing/) - Sistema de Gestion de Paquetes en Python
+* [PyCharm](https://www.jetbrains.com/es-es/pycharm/) - Editor de codigo
 
 ## Contribuyendo 🖇️
 
