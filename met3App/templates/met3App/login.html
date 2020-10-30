@@ -12,15 +12,24 @@
     <div class="col-md-8">
       <div class="card-body bg-dark text-white">
         <h5 class="card-title">Login Session</h5>
-           <form>
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+           <form method="POST" class="validate-form">
+            {% csrf_token %} 
+            <div class="form-group">
+
+            {% if form.non_field_errors %}
+            <p style="color:red">Usuario o contraseña incorrectos, intente nuevamente.</p> 
+            {% endif %}
+
+            <label for="exampleInputEmail1">Username</label>
+            <div class="validate-input" >
+             {{ form.username }}
+             </div>
+
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" class="form-control" id="exampleInputPassword1">
+            {{ form.password }}
           </div>
             <button type="submit" class="btn btn-primary mb-5">Submit</button>
         </form>
