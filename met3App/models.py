@@ -37,8 +37,6 @@ class PropertyUser(models.Model):
     services= models.ManyToManyField(ProService)
     maxPax = models.IntegerField()
     image = models.ImageField(upload_to='img', null=True)
-    starDate = models.DateField()
-    endDate = models.DateField()
     dailyRate = models.IntegerField()
     city = models.ForeignKey(City, null=True, blank=True, on_delete=models.CASCADE)
     host = models.ForeignKey(Host, null=True, blank=True, on_delete=models.CASCADE)
@@ -51,7 +49,8 @@ class PropertyUser(models.Model):
 
 class Reservation(models.Model):
     total = models.IntegerField(blank=True, null=True)
-    dateReservation = models.DateField(blank=False, null=False, auto_now=True)
+    startDate = models.DateField()
+    endDate = models.DateField()
     name = models.CharField(blank=True, null=True, max_length=50)
     lastname = models.CharField(blank=True, null=True, max_length=50)
     email = models.EmailField(blank=True, null=True, max_length=200)
@@ -61,11 +60,11 @@ class Reservation(models.Model):
         verbose_name_plural = "Reservas"
 
     def __str__(self):
-        return self.name + ' ' + self.lastname + ' ' + self.propertyUser
+        return self.name + ' ' + self.lastname + ' ' + str(self.propertyUser)
 
 
 class RentalDate(models.Model):
-    starDate = models.DateField()
+    startDate = models.DateField()
     endDate = models.DateField()
     propertyUser = models.ForeignKey(PropertyUser, null=True, blank=True, on_delete=models.CASCADE)
     reservation = models.ForeignKey(Reservation, on_delete=models.PROTECT, blank=True, null=True)
@@ -74,7 +73,7 @@ class RentalDate(models.Model):
         verbose_name_plural = "Fechas de Reservas"
 
     def __str__(self):
-        return  self.starDate.strftime('%d/%m/%Y') + " to " + self.endDate.strftime('%d/%m/%Y')
+        return  self.startDate.strftime('%d/%m/%Y') + " to " + self.endDate.strftime('%d/%m/%Y')
 
 class RentalDateInline(admin.TabularInline):
     model = RentalDate
