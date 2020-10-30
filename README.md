@@ -30,11 +30,19 @@ _Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener 
 ```
 $ python -m pip install Django
 ```
+Instalando la versión de desarrollo
+Seguimiento del desarrollo de Django
 
-_Y repite_
+Si decide utilizar la última versión de desarrollo de Django, querrá prestar mucha atención a la línea de tiempo de desarrollo y querrá estar atento a las notas de la versión para la próxima versión . Esto le ayudará a estar al tanto de las nuevas funciones que desee utilizar, así como de los cambios que deberá realizar en su código al actualizar su copia de Django. (Para las versiones estables, los cambios necesarios se documentan en las notas de la versión).
+
+Si desea poder actualizar su código de Django ocasionalmente con las últimas mejoras y correcciones de errores, siga estas instrucciones:
+
+Asegúrese de tener Git instalado y de poder ejecutar sus comandos desde un shell. (Ingrese en un indicador de shell para probar esto).git help
+
+Echa un vistazo a la rama de desarrollo principal de Django así:
 
 ```
-hasta finalizar
+$ git clone https://github.com/django/django.git
 ```
 
 _Finaliza con un ejemplo de cómo obtener datos del sistema o como usarlos para una pequeña demo_
