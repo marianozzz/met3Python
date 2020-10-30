@@ -41,30 +41,6 @@ Echa un vistazo a la rama de desarrollo principal de Django así:
 $ git clone https://github.com/django/django.git
 ```
 
-## Ejecutando las pruebas ⚙️
-
-_Explica como ejecutar las pruebas automatizadas para este sistema_
-
-### Analice las pruebas end-to-end 🔩
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-### Y las pruebas de estilo de codificación ⌨️
-
-_Explica que verifican estas pruebas y por qué_
-
-```
-Da un ejemplo
-```
-
-## Despliegue 📦
-
-_Agrega notas adicionales sobre como hacer deploy_
-
 ## Construido con 🛠️
 
 * [Python 3.8](https://www.python.org/) - Leguaje de Programacion
@@ -73,18 +49,6 @@ _Agrega notas adicionales sobre como hacer deploy_
 * [Django 2.2](https://www.djangoproject.com/) - Frameworks Web
 * [Pip 20.2.4](https://pip.pypa.io/en/stable/installing/) - Sistema de Gestion de Paquetes en Python
 * [PyCharm](https://www.jetbrains.com/es-es/pycharm/) - Editor de codigo
-
-## Contribuyendo 🖇️
-
-Por favor lee el [CONTRIBUTING.md](https://gist.github.com/villanuevand/xxxxxx) para detalles de nuestro código de conducta, y el proceso para enviarnos pull requests.
-
-## Wiki 📖
-
-Puedes encontrar mucho más de cómo utilizar este proyecto en nuestra [Wiki](https://github.com/tu/proyecto/wiki)
-
-## Versionado 📌
-
-Usamos [SemVer](http://semver.org/) para el versionado. Para todas las versiones disponibles, mira los [tags en este repositorio](https://github.com/tu/proyecto/tags).
 
 ## Autores ✒️
 
@@ -95,19 +59,8 @@ _Menciona a todos aquellos que ayudaron a levantar el proyecto desde sus inicios
 * **Patricio Diaz** - [Patricio](https://github.com/patriciodanielDiaz)
 * **Federico Tuñon Alves** - [Federico](https://github.com/tunonalves)
 
-También puedes mirar la lista de todos los [contribuyentes](https://github.com/your/project/contributors) quíenes han participado en este proyecto. 
-
 ## Licencia 📄
 
 Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md](LICENSE.md) para detalles
-
-## Expresiones de Gratitud 🎁
-
-* Comenta a otros sobre este proyecto 📢
-* Invita una cerveza 🍺 o un café ☕ a alguien del equipo. 
-* Da las gracias públicamente 🤓.
-* etc.
-
-
 
 ---
