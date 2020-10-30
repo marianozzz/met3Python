@@ -1,6 +1,6 @@
-# Título del Proyecto
+# ALQUILERES UTN
 
-_Acá va un párrafo que describa lo que es el proyecto_
+Proyecto de Alquileres online para la materia Metodologia de Sistemas 3 de la carrera Tecnico Superior en Sistemas Informaticos de la Universidad Tecnologica Nacional - Mar del Plata
 
 ## Comenzando 🚀
 
@@ -11,20 +11,24 @@ Mira **Deployment** para conocer como desplegar el proyecto.
 
 ### Pre-requisitos 📋
 
-_Que cosas necesitas para instalar el software y como instalarlas_
 
-```
-Da un ejemplo
-```
+Es necesario tener instalado en la computadora y/o servidor Python 3.8 y Django 2.2
+
 
 ### Instalación 🔧
 
+Instalando una versión oficial con pip
+Esta es la forma recomendada de instalar Django.
+
+Instale pip . Lo más fácil es utilizar el instalador de pip independiente . Si su distribución ya está pipinstalada, es posible que deba actualizarla si está desactualizada. Si está desactualizado, lo sabrá porque la instalación no funcionará.
+
+Ingrese el comando:
+
+
 _Una serie de ejemplos paso a paso que te dice lo que debes ejecutar para tener un entorno de desarrollo ejecutandose_
 
-_Dí cómo será ese paso_
-
 ```
-Da un ejemplo
+$ python -m pip install Django
 ```
 
 _Y repite_
@@ -102,4 +106,3 @@ Este proyecto está bajo la Licencia (Tu Licencia) - mira el archivo [LICENSE.md
 
 
 ---
-⌨️ con ❤️ por [Villanuevand](https://github.com/Villanuevand) 😊
