@@ -1,3 +1,4 @@
+from django.db.models import Q
 from django.shortcuts import render, HttpResponse, redirect
 from django.template import Template,Context
 from django.template import loader
@@ -111,7 +112,7 @@ def reserva(request,id):
         )
         r.save()
          
-    return  render(request, "met3App/home.html")
+    return  render(request, "met3App/success.html")
 
 
 
