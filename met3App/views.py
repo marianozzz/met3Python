@@ -110,7 +110,7 @@ def reserva(request,id):
         )
         r.save()
          
-    return  render(request, "met3App/home.html")
+    return  render(request, "met3App/success.html")
 
 
 
