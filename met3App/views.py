@@ -1,9 +1,6 @@
-<<<<<<< HEAD
 from django.db.models.query_utils import Q
 from django.shortcuts import render, HttpResponse
-=======
 from django.shortcuts import render, HttpResponse, redirect
->>>>>>> 9ad47cf9cb3d5c36cd91ff6da31d8435db1608e4
 from django.template import Template,Context
 from django.template import loader
 from django.db.models import Q
