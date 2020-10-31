@@ -1,0 +1,55 @@
+
+{% extends "met3App/layout.html" %}
+
+{% load static %}
+
+{% block navbar %}
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <a class="navbar-brand" href="{% url 'myproperty' %}">Alquileres UTN</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+    <ul class="navbar-nav mr-auto">
+      <li class="nav-item active">
+        <a class="nav-link" href="{% url 'myproperty' %}">Mis Propiedades <span class="sr-only">(current)</span></a>
+      </li>
+    </ul>
+    <div class="form-inline my-2 my-lg-0">
+      <button class="btn btn-outline-success my-2 my-sm-0" style="margin-left: 15px;"><a href="{% url 'logout' %}">Logout</a></button>
+    </div>
+  </div>
+</nav>
+{% endblock %}
+
+{% block content %}
+<!-- agregar filtrando por ciudad, cantidad de pax y rango de fechas -->
+<div class="row mt-4">
+
+    {% if Properties %}
+
+       {% for pro in Properties %}
+        <div class="col-md-4">
+          <div class="card mb-4 shadow-sm">
+            <!--<svg class="bd-placeholder-img card-img-top" width="100%" height="225"  xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice" focusable="false" role="img" aria-label="Placeholder: Thumbnail"><title>Placeholder</title><rect width="100%" height="100%" fill="#55595c"/><text x="50%" y="50%" fill="#eceeef" dy=".3em">Thumbnail</text></svg>-->
+            <img class="bd-placeholder-img card-img-top" width="100%" height="225" src="{{ pro.image.url }}" alt="Imagen de la propiedad">
+
+            <div class="card-body">
+              <p class="card-text"> <em>Camas {{ pro.maxPax }}</em> <h4>{{ pro.title }}</h4> <p>${{ pro.dailyRate }} ARG por noche</p> <p>{% for ser in pro.services.all %} {{ ser }} {% endfor %}</p></p>
+              <div class="d-flex justify-content-between align-items-center">
+                <div class="btn-group">
+                  <a href="{% url 'myreservation' pro.id %} " class="btn btn-primary btn-sm">Ver reservas</a>
+                  <!--<button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>-->
+                </div>
+                <small class="text-muted">{{ pro.city }}</small>
+              </div>
+            </div>
+          </div>
+        </div>
+         {% endfor %}
+     {% endif %}
+
+      </div>
+
+{% endblock %}

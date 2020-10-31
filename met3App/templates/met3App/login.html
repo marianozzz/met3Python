@@ -12,17 +12,29 @@
     <div class="col-md-8">
       <div class="card-body bg-dark text-white">
         <h5 class="card-title">Login Session</h5>
-           <form method="POST" action="/admin/login/?next=/admin/">
-            {% csrf_token %}
-          <div class="form-group">
-            <label for="exampleInputEmail1">Email address</label>
-            <input type="text" class="form-control"  name="username">
+           <form method="POST" class="validate-form">
+            {% csrf_token %} 
+            <div class="form-group">
+
+            {% if form.non_field_errors %}
+            <p style="color:red">Usuario o contraseña incorrectos, intente nuevamente.</p> 
+            {% endif %}
+
+            <label for="exampleInputEmail1">Username</label>
+            <div class="validate-input" >
+             {{ form.username }}
+             </div>
+
             <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
           </div>
           <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
+<<<<<<< HEAD
             <input type="password" class="form-control" name="password" required id="id_password">
             <input type="hidden" name="next" value="/admin/">
+=======
+            {{ form.password }}
+>>>>>>> 9ad47cf9cb3d5c36cd91ff6da31d8435db1608e4
           </div>
             <button type="submit" class="btn btn-primary mb-5">Submit</button>
         </form>

@@ -1,28 +1,48 @@
+<<<<<<< HEAD
 from django.db.models.query_utils import Q
 from django.shortcuts import render, HttpResponse
+=======
+from django.shortcuts import render, HttpResponse, redirect
+>>>>>>> 9ad47cf9cb3d5c36cd91ff6da31d8435db1608e4
 from django.template import Template,Context
 from django.template import loader
 from django.db.models import Q
 from met3App.models import *
 from datetime import date
+from django.views.generic.edit import FormView
+from django.urls import reverse_lazy
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import never_cache
+from django.views.decorators.csrf import csrf_protect
+from django.contrib.auth import login, logout
+from .forms import FormLogin
+from django.http import HttpResponseRedirect
 
 # Create your views here.
 
 def home(request):
-    
     ProAll=PropertyUser.objects.all()
     return render(request, "met3App/home.html",{"Properties":ProAll})
 
-def login(request):
-    return  render(request, "met3App/login.html")
- 
+
+def my_property(request):
+    current_user = request.user
+    ProAll=PropertyUser.objects.filter(host= current_user)
+    return render(request, "met3App/myproperty.html",{"Properties":ProAll})
+
+
+def my_reservation(request, id):
+
+    propertyUser=PropertyUser.objects.get(id=id)
+    reservation = list(Reservation.objects.filter(propertyUser=propertyUser))
+    context={"propertyUser":propertyUser, "reservation":reservation}
+    return render(request, "met3App/myreservation.html", context)
 
 def details(request,id):
     propertyUser= PropertyUser.objects.get(id=id)
     rentalsDate = RentalDate.objects.filter(propertyUser=propertyUser,reservation__isnull=True)
     rentalsDate= list(rentalsDate)
     context={"propertyUser":propertyUser, "rentalsDate": rentalsDate, "loop_maxpax": range(1, propertyUser.maxPax+1)}
-
     return  render(request, "met3App/details.html",context)
 
 def search(request):
@@ -45,6 +65,7 @@ def result (request):
                     Q(maxPax = queryset_pax)
                     ).distinct()
     return render(request, "met3App/result.html",{"resultado": resultado})
+
 
 def about_us(request):
     
@@ -72,3 +93,29 @@ def reserva(request,id):
         r.save()
          
     return  render(request, "met3App/home.html")
+
+
+
+
+class Login(FormView):
+    template_name= 'met3App/login.html'
+    form_class= FormLogin
+    success_url= reverse_lazy('myproperty')
+
+    @method_decorator(csrf_protect) #decoradores de seguridad/proteccion
+    @method_decorator(never_cache)
+    def dispatch(self,request, *args, **kwargs):
+        if request.user.is_authenticated:
+            return HttpResponseRedirect(self.get_success_url())
+        else:
+            return super(Login,self).dispatch(request, *args, **kwargs)
+
+    def form_valid(self, form):
+        login(self.request, form.get_user())
+        return super(Login,self).form_valid(form)
+
+
+
+def log_out(request):
+    logout(request)
+    return redirect('Home')
