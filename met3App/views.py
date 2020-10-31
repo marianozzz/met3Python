@@ -1,6 +1,8 @@
+from django.db.models.query_utils import Q
 from django.shortcuts import render, HttpResponse
 from django.template import Template,Context
 from django.template import loader
+from django.db.models import Q
 from met3App.models import *
 from datetime import date
 
@@ -24,9 +26,25 @@ def details(request,id):
     return  render(request, "met3App/details.html",context)
 
 def search(request):
-    
     ProAll=City.objects.all()
     return  render(request, "met3App/search.html",{"ProAll":ProAll})
+    
+def result (request): 
+    queryset_city = request.GET.get("ciudad")
+    queryset_pax = request.GET.get("huespedes")
+    start_date = request.GET.get("desde")
+    end_date = request.GET.get("hasta")
+   
+    
+    #print(queryset_city)
+    resultado=PropertyUser.objects.all()
+    
+    if queryset_city:
+        resultado = PropertyUser.objects.filter(
+                    Q(city_id = queryset_city) &
+                    Q(maxPax = queryset_pax)
+                    ).distinct()
+    return render(request, "met3App/result.html",{"resultado": resultado})
 
 def about_us(request):
     
