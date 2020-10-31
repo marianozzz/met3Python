@@ -12,6 +12,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import login, logout
 from .forms import FormLogin
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 
 # Create your views here.
 
@@ -73,8 +74,6 @@ def result (request):
     queryset_pax = request.GET.get("huespedes")
     start_date = request.GET.get("desde")
     end_date = request.GET.get("hasta")
-   
-    
     #print(queryset_city)
     resultado=PropertyUser.objects.all()
     
