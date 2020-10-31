@@ -1,9 +1,6 @@
-from django.db.models.query_utils import Q
-from django.shortcuts import render, HttpResponse
 from django.shortcuts import render, HttpResponse, redirect
 from django.template import Template,Context
 from django.template import loader
-from django.db.models import Q
 from met3App.models import *
 from datetime import date
 from django.views.generic.edit import FormView
@@ -37,8 +34,32 @@ def my_reservation(request, id):
 
 def details(request,id):
     propertyUser= PropertyUser.objects.get(id=id)
-    rentalsDate = RentalDate.objects.filter(propertyUser=propertyUser,reservation__isnull=True)
+
+    reservation= Reservation.objects.filter(propertyUser=propertyUser)
+    rentalsDate= RentalDate.objects.filter(propertyUser=propertyUser)
     rentalsDate= list(rentalsDate)
+    
+    if reservation:       
+      for r in reservation:
+        for rd in rentalsDate:
+            if r.startDate == rd.startDate and r.endDate == rd.endDate:
+                rd.delete()
+                rentalsDate.remove(rd)
+            elif r.startDate == rd.startDate:
+                 rd.startDate = r.endDate
+            elif r.startDate > rd.startDate and r.endDate <= rd.endDate:
+                    aux2=rd.endDate
+                    rd.endDate=r.startDate
+
+                    aux= RentalDate(
+                        startDate= r.endDate,
+                        endDate= aux2,
+                        propertyUser= propertyUser)
+                    aux.save()
+                    rentalsDate.append(aux)
+    
+
+
     context={"propertyUser":propertyUser, "rentalsDate": rentalsDate, "loop_maxpax": range(1, propertyUser.maxPax+1)}
     return  render(request, "met3App/details.html",context)
 
@@ -60,6 +81,7 @@ def result (request):
                     Q(maxPax = queryset_pax)
                     ).distinct()
     return render(request, "met3App/result.html",{"resultado": resultado})
+
 
 
 def about_us(request):
