@@ -4,6 +4,7 @@ from django.template import Template,Context
 from django.template import loader
 from met3App.models import *
 from datetime import date
+from datetime import datetime
 from django.views.generic.edit import FormView
 from django.urls import reverse_lazy
 from django.utils.decorators import method_decorator
@@ -77,13 +78,24 @@ def result (request):
     #print(queryset_city)
     resultado=PropertyUser.objects.all()
     
-    if queryset_city:
-        resultado = PropertyUser.objects.filter(
-                    Q(city_id = queryset_city) &
-                    Q(maxPax = queryset_pax)
-                    ).distinct()
-    return render(request, "met3App/result.html",{"resultado": resultado})
+    #if queryset_city:
+        #resultado = PropertyUser.objects.filter(
+         #           Q(city_id = queryset_city) &
+          #          Q(maxPax = queryset_pax)
+           #         ).distinct()
 
+    resultado=PropertyUser.objects.filter(city=queryset_city).filter(maxPax__gt=queryset_pax)
+    #lista=list()
+    #for p in resultado:
+        
+     #   rentalDate=RentalDate.objects.filter(propertyUser=p)
+        
+      #  for r in rentalDate:
+       #     aux=PropertyUser.objects.filter(r.datetime.startDate__range == [start_date,end_date], r.datetime.endDate__range == [start_date,end_date]).distinct()
+        #    lista.append(aux)
+
+    print(lista)
+    return render(request, "met3App/result.html",{"resultado": resultado})
 
 
 def about_us(request):
