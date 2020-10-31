@@ -51,8 +51,6 @@ def result (request):
     queryset_pax = request.GET.get("huespedes")
     start_date = request.GET.get("desde")
     end_date = request.GET.get("hasta")
-   
-    
     #print(queryset_city)
     resultado=PropertyUser.objects.all()
     
