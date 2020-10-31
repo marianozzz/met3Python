@@ -11,6 +11,7 @@ from django.views.decorators.csrf import csrf_protect
 from django.contrib.auth import login, logout
 from .forms import FormLogin
 from django.http import HttpResponseRedirect
+from django.db.models import Q
 
 # Create your views here.
 
